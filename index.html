@@ -1,0 +1,1150 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Seibert Advocacia — Direito Trabalhista</title>
+  <link rel="icon" href="./images/iconfav.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy-deep:   #06101d;
+      --navy:        #08111f;
+      --navy-mid:    #0d1728;
+      --navy-card:   #111e33;
+      --gold:        #c3a369;
+      --gold-light:  #d7be8f;
+      --gold-pale:   #efe4cc;
+      --cream:       #f3f0e8;
+      --muted:       rgba(243, 240, 232, 0.62);
+      --border:      rgba(195, 163, 105, 0.18);
+      --radius:      10px;
+      --max:         1180px;
+      --transition:  0.3s ease;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--navy);
+      color: var(--cream);
+      font-family: 'Open Sans', sans-serif;
+      font-size: 16px;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ─── UTILITIES ─────────────────────────────────── */
+    .container { width: 100%; max-width: var(--max); margin: 0 auto; padding: 0 24px; }
+    .section    { padding: 96px 0; }
+    .section--dark { background: var(--navy-mid); }
+    .section--deep { background: var(--navy-deep); }
+
+    .tag {
+      display: inline-block;
+      font-family: 'Cinzel', serif;
+      font-size: 11px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 16px;
+    }
+
+    h2.section-title {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(28px, 4vw, 42px);
+      font-weight: 600;
+      color: var(--cream);
+      line-height: 1.25;
+      margin-bottom: 20px;
+    }
+
+    h2.section-title span { color: var(--gold); }
+
+    p.section-sub {
+      font-size: 17px;
+      color: var(--muted);
+      max-width: 560px;
+      line-height: 1.8;
+    }
+
+    .divider {
+      width: 48px;
+      height: 2px;
+      background: var(--gold);
+      margin: 24px 0;
+    }
+
+    /* ─── BUTTON ─────────────────────────────────────── */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 15px 32px;
+      border-radius: 6px;
+      font-family: 'Cinzel', serif;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      text-decoration: none;
+      cursor: pointer;
+      transition: var(--transition);
+      border: none;
+    }
+
+    .btn-gold {
+      background: var(--gold);
+      color: var(--navy-deep);
+    }
+    .btn-gold:hover {
+      background: var(--gold-light);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(195, 163, 105, 0.35);
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--gold);
+      border: 1.5px solid var(--gold);
+    }
+    .btn-outline:hover {
+      background: var(--gold);
+      color: var(--navy-deep);
+      transform: translateY(-2px);
+    }
+
+    .btn svg, .btn .icon { width: 18px; height: 18px; flex-shrink: 0; }
+
+    /* ─── NAV ────────────────────────────────────────── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+      background: rgba(6, 16, 29, 0.92);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 72px;
+    }
+
+    .nav-logo img { height: 48px; width: auto; }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: rgba(243,240,232,0.8);
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.5px;
+      transition: color var(--transition);
+    }
+    .nav-links a:hover { color: var(--gold); }
+
+    .nav-cta { display: flex; align-items: center; gap: 12px; }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 6px;
+      background: none;
+      border: none;
+      outline: none;
+    }
+    .hamburger span {
+      display: block;
+      width: 26px;
+      height: 2px;
+      background: var(--cream);
+      border-radius: 2px;
+      transition: var(--transition);
+    }
+
+    /* ─── HERO ───────────────────────────────────────── */
+    #hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background-image: url('./images/hero-desktop.png');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        105deg,
+        rgba(6,16,29,0.92) 0%,
+        rgba(6,16,29,0.78) 55%,
+        rgba(6,16,29,0.40) 100%
+      );
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 680px;
+      padding-top: 72px;
+    }
+
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 12px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--gold);
+      font-family: 'Cinzel', serif;
+      margin-bottom: 24px;
+    }
+    .hero-eyebrow::before {
+      content: '';
+      display: block;
+      width: 32px;
+      height: 1px;
+      background: var(--gold);
+    }
+
+    .hero-title {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(32px, 5vw, 58px);
+      font-weight: 700;
+      line-height: 1.15;
+      margin-bottom: 24px;
+      color: var(--cream);
+    }
+    .hero-title em {
+      font-style: normal;
+      color: var(--gold);
+    }
+
+    .hero-sub {
+      font-size: 18px;
+      color: rgba(243,240,232,0.80);
+      max-width: 520px;
+      margin-bottom: 40px;
+      line-height: 1.75;
+    }
+
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 16px; margin-bottom: 28px; }
+
+    /* Google proof badge */
+    .hero-proof {
+      display: inline-flex;
+      align-items: center;
+      gap: 16px;
+      background: rgba(8,17,31,0.78);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 14px 22px;
+      backdrop-filter: blur(10px);
+      max-width: 100%;
+      box-sizing: border-box;
+    }
+    .proof-divider {
+      width: 1px;
+      height: 36px;
+      background: var(--border);
+    }
+    .proof-google-logo { height: 28px; width: auto; display: block; }
+    .proof-info { display: flex; flex-direction: column; gap: 3px; }
+    .proof-stars { color: #fbbc04; font-size: 16px; letter-spacing: 2px; line-height: 1; }
+    .proof-label {
+      font-size: 12px;
+      color: var(--muted);
+      white-space: nowrap;
+    }
+    .proof-label strong { color: var(--cream); font-weight: 600; }
+
+    /* ─── SERVICES ───────────────────────────────────── */
+    .services-header { text-align: center; margin-bottom: 56px; }
+    .services-header .section-sub { margin: 0 auto; }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .service-card {
+      background: var(--navy-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 32px 28px;
+      transition: var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+    .service-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--gold), transparent);
+      opacity: 0;
+      transition: opacity var(--transition);
+    }
+    .service-card:hover {
+      border-color: rgba(195,163,105,0.42);
+      transform: translateY(-4px);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.32);
+    }
+    .service-card:hover::before { opacity: 1; }
+
+    .service-icon {
+      width: 52px;
+      height: 52px;
+      background: rgba(195,163,105,0.08);
+      border: 1px solid rgba(195,163,105,0.20);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+    .service-icon svg {
+      width: 24px;
+      height: 24px;
+      stroke: var(--gold);
+      fill: none;
+      stroke-width: 1.6;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .service-card h3 {
+      font-family: 'Cinzel', serif;
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--cream);
+      margin-bottom: 10px;
+    }
+
+    .service-card p {
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .services-cta { text-align: center; margin-top: 48px; }
+
+    /* ─── ABOUT ──────────────────────────────────────── */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: flex-start;
+    }
+
+    .about-video {
+      width: 100%;
+      border-radius: 14px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      background: var(--navy-card);
+    }
+
+    .about-video iframe {
+      width: 100%;
+      height: 680px;
+      border: none;
+      display: block;
+    }
+
+    .ig-card {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      padding: 40px 32px;
+      text-align: center;
+      text-decoration: none;
+      background: linear-gradient(145deg, rgba(17,28,52,0.95), rgba(11,18,35,0.98));
+      transition: var(--transition);
+    }
+    .ig-card:hover { background: linear-gradient(145deg, rgba(22,34,62,0.98), rgba(14,22,42,0.98)); }
+    .ig-card:hover .ig-btn { background: var(--gold); color: var(--navy-deep); }
+
+    .ig-logo {
+      width: 64px; height: 64px;
+      border-radius: 18px;
+      background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .ig-logo svg { width: 34px; height: 34px; fill: #fff; }
+
+    .ig-handle {
+      font-family: 'Cinzel', serif;
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--cream);
+      letter-spacing: 0.5px;
+    }
+    .ig-sub {
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.6;
+      max-width: 260px;
+    }
+    .ig-btn {
+      margin-top: 8px;
+      padding: 12px 28px;
+      border: 1px solid var(--gold);
+      border-radius: 8px;
+      font-family: 'Cinzel', serif;
+      font-size: 12px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--gold);
+      background: transparent;
+      transition: var(--transition);
+      cursor: pointer;
+    }
+
+    .about-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin-top: 36px;
+    }
+
+    .stat-box {
+      background: rgba(195,163,105,0.07);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 24px 20px;
+      text-align: center;
+    }
+
+    .stat-number {
+      font-family: 'Cinzel', serif;
+      font-size: 36px;
+      font-weight: 700;
+      color: var(--gold);
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+
+    .stat-label {
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    /* ─── PROMISE ────────────────────────────────────── */
+    #promise {
+      background: linear-gradient(135deg, var(--navy-deep) 0%, var(--navy-mid) 100%);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      text-align: center;
+      padding: 96px 0;
+    }
+
+    .promise-logo { margin-bottom: 32px; }
+    .promise-logo img { height: 80px; width: auto; opacity: 0.9; }
+
+    .promise-title {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(24px, 3.5vw, 40px);
+      font-weight: 700;
+      color: var(--cream);
+      max-width: 740px;
+      margin: 0 auto 20px;
+      line-height: 1.3;
+    }
+    .promise-title span { color: var(--gold); }
+
+    .promise-sub {
+      font-size: 17px;
+      color: var(--muted);
+      max-width: 560px;
+      margin: 0 auto 40px;
+    }
+
+    .promise-features {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 32px;
+      margin-top: 56px;
+      margin-bottom: 48px;
+    }
+
+    .promise-feature {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+    }
+    .promise-feature-icon {
+      width: 56px; height: 56px;
+      border-radius: 14px;
+      background: rgba(195,163,105,0.10);
+      border: 1px solid rgba(195,163,105,0.25);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .promise-feature-icon svg {
+      width: 26px; height: 26px;
+      stroke: var(--gold);
+      fill: none;
+      stroke-width: 1.6;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+    .promise-feature span {
+      font-family: 'Cinzel', serif;
+      font-size: 12px;
+      color: var(--gold-pale);
+      letter-spacing: 1px;
+    }
+
+    /* ─── PRINCIPLES ─────────────────────────────────── */
+    .principles-header { text-align: center; margin-bottom: 56px; }
+
+    .principles-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+    }
+
+    .principle-card {
+      background: linear-gradient(180deg, rgba(18,28,48,0.96), rgba(13,21,37,0.96));
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 40px 32px;
+      text-align: center;
+      transition: var(--transition);
+    }
+    .principle-card:hover {
+      border-color: rgba(195,163,105,0.4);
+      box-shadow: 0 16px 40px rgba(3,8,18,0.4);
+      transform: translateY(-4px);
+    }
+
+    .principle-icon {
+      width: 56px;
+      height: 56px;
+      background: rgba(195,163,105,0.08);
+      border: 1px solid rgba(195,163,105,0.20);
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+    .principle-icon svg {
+      width: 26px;
+      height: 26px;
+      stroke: var(--gold);
+      fill: none;
+      stroke-width: 1.6;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      display: block;
+    }
+
+    .principle-card h3 {
+      font-family: 'Cinzel', serif;
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--cream);
+      margin-bottom: 14px;
+    }
+
+    .principle-card p {
+      font-size: 14.5px;
+      color: var(--muted);
+      line-height: 1.75;
+    }
+
+    /* ─── FOOTER ─────────────────────────────────────── */
+    footer {
+      background: var(--navy-deep);
+      border-top: 1px solid var(--border);
+      padding: 72px 0 0;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 56px;
+      padding-bottom: 56px;
+    }
+
+    .footer-brand img { height: 56px; width: auto; margin-bottom: 20px; }
+
+    .footer-desc {
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.8;
+      margin-bottom: 24px;
+      max-width: 340px;
+    }
+
+    .footer-contact-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      margin-bottom: 14px;
+      font-size: 14px;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color var(--transition);
+    }
+    .footer-contact-item:hover { color: var(--gold); }
+    .footer-contact-item .ci { font-size: 16px; flex-shrink: 0; margin-top: 2px; }
+
+    .footer-col h4 {
+      font-family: 'Cinzel', serif;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--cream);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 24px;
+    }
+
+    .footer-links { list-style: none; }
+    .footer-links li { margin-bottom: 12px; }
+    .footer-links a {
+      font-size: 14px;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color var(--transition);
+    }
+    .footer-links a:hover { color: var(--gold); }
+
+    .footer-socials { display: flex; gap: 12px; margin-top: 8px; }
+    .social-btn {
+      width: 40px; height: 40px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 16px;
+      transition: var(--transition);
+    }
+    .social-btn:hover {
+      border-color: var(--gold);
+      color: var(--gold);
+      background: rgba(195,163,105,0.08);
+    }
+
+    .footer-bar {
+      border-top: 1px solid var(--border);
+      padding: 20px 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .footer-bar p {
+      font-size: 13px;
+      color: rgba(243,240,232,0.38);
+    }
+
+    /* ─── WHATSAPP FLOAT ─────────────────────────────── */
+    .wa-float {
+      position: fixed;
+      bottom: 28px;
+      right: 28px;
+      z-index: 999;
+      width: 56px; height: 56px;
+      border-radius: 50%;
+      background: #25d366;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 20px rgba(37,211,102,0.4);
+      text-decoration: none;
+      transition: var(--transition);
+    }
+    .wa-float:hover { transform: scale(1.08); box-shadow: 0 6px 28px rgba(37,211,102,0.55); }
+    .wa-float svg { width: 28px; height: 28px; fill: #fff; }
+
+    /* ─── ANIMATIONS ─────────────────────────────────── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(28px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .fade-up { animation: fadeUp 0.7s ease forwards; }
+    .delay-1 { animation-delay: 0.1s; }
+    .delay-2 { animation-delay: 0.25s; }
+    .delay-3 { animation-delay: 0.4s; }
+    .delay-4 { animation-delay: 0.55s; }
+
+    /* ─── MOBILE NAV ─────────────────────────────────── */
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 999;
+      background: rgba(6,16,29,0.98);
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 32px;
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a {
+      font-family: 'Cinzel', serif;
+      font-size: 22px;
+      color: var(--cream);
+      text-decoration: none;
+    }
+    .mobile-menu a:hover { color: var(--gold); }
+    .mobile-close {
+      position: absolute;
+      top: 24px; right: 24px;
+      background: none;
+      border: none;
+      color: var(--cream);
+      font-size: 28px;
+      cursor: pointer;
+    }
+
+    /* ─── RESPONSIVE ─────────────────────────────────── */
+    @media (max-width: 900px) {
+      .nav-links { display: none; }
+      .nav-cta .btn { display: none; }
+      .hamburger { display: flex; }
+
+      .services-grid { grid-template-columns: repeat(2, 1fr); }
+      .about-grid { grid-template-columns: 1fr; gap: 40px; }
+      .principles-grid { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr; gap: 36px; }
+    }
+
+    @media (max-width: 600px) {
+      .section { padding: 64px 0; }
+      .services-grid { grid-template-columns: 1fr; }
+      .about-stats { grid-template-columns: 1fr 1fr; }
+      .hero-actions { flex-direction: column; }
+      .hero-actions .btn { width: 100%; justify-content: center; }
+
+      #hero { min-height: 100svh; align-items: flex-end; padding-bottom: 48px; }
+      .hero-bg {
+        background-position: top center;
+        background-size: cover;
+      }
+      .hero-overlay {
+        background: linear-gradient(
+          to top,
+          rgba(6,16,29,0.97) 0%,
+          rgba(6,16,29,0.82) 45%,
+          rgba(6,16,29,0.30) 75%,
+          rgba(6,16,29,0.10) 100%
+        );
+      }
+      .hero-content {
+        max-width: 100%;
+        padding-top: 0;
+        text-align: center;
+      }
+      .hero-eyebrow { justify-content: center; }
+      .hero-sub { font-size: 15px; }
+      .hero-proof { width: 100%; max-width: 320px; justify-content: center; align-self: center; }
+      .proof-google-logo { height: 22px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── NAV ────────────────────────────────────────────── -->
+<nav>
+  <div class="container nav-inner">
+    <a href="#" class="nav-logo">
+      <img src="./images/vetor-logo.png" alt="Seibert Advocacia e Consultoria">
+    </a>
+    <ul class="nav-links">
+      <li><a href="#servicos">Serviços</a></li>
+      <li><a href="#sobre">Sobre</a></li>
+      <li><a href="#principios">Princípios</a></li>
+      <li><a href="#contato">Contato</a></li>
+    </ul>
+    <div class="nav-cta">
+      <a href="https://api.whatsapp.com/send/?phone=5577998678131" class="btn btn-gold" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.52 3.48A11.93 11.93 0 0 0 12 0C5.37 0 0 5.37 0 12c0 2.11.55 4.17 1.6 5.99L0 24l6.18-1.62A11.94 11.94 0 0 0 12 24c6.63 0 12-5.37 12-12 0-3.2-1.25-6.21-3.48-8.52zM12 22a9.94 9.94 0 0 1-5.07-1.39l-.36-.22-3.74.98.99-3.65-.23-.37A9.94 9.94 0 0 1 2 12C2 6.49 6.49 2 12 2s10 4.49 10 10-4.49 10-10 10zm5.47-7.41c-.3-.15-1.77-.87-2.04-.97s-.47-.15-.67.15-.77.97-.94 1.17-.35.22-.65.07a8.15 8.15 0 0 1-2.39-1.48 9.06 9.06 0 0 1-1.65-2.06c-.18-.3-.02-.47.13-.62.14-.13.3-.35.45-.52.15-.18.2-.3.3-.5s.05-.38-.02-.52-.67-1.61-.91-2.2c-.24-.58-.49-.5-.67-.51l-.57-.01c-.2 0-.52.07-.79.38s-1.04 1.01-1.04 2.47 1.06 2.86 1.21 3.06c.15.2 2.08 3.17 5.03 4.45.7.3 1.25.48 1.68.62.7.22 1.34.19 1.84.12.56-.08 1.73-.71 1.97-1.39.24-.68.24-1.27.17-1.39-.07-.12-.27-.19-.57-.34z"/></svg>
+        Falar com advogado
+      </a>
+      <button class="hamburger" onclick="document.getElementById('mobileMenu').classList.add('open')" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- ── MOBILE MENU ─────────────────────────────────────── -->
+<div id="mobileMenu" class="mobile-menu">
+  <button class="mobile-close" onclick="document.getElementById('mobileMenu').classList.remove('open')">&times;</button>
+  <a href="#servicos" onclick="document.getElementById('mobileMenu').classList.remove('open')">Serviços</a>
+  <a href="#sobre" onclick="document.getElementById('mobileMenu').classList.remove('open')">Sobre</a>
+  <a href="#principios" onclick="document.getElementById('mobileMenu').classList.remove('open')">Princípios</a>
+  <a href="#contato" onclick="document.getElementById('mobileMenu').classList.remove('open')">Contato</a>
+  <a href="https://api.whatsapp.com/send/?phone=5577998678131" class="btn btn-gold" target="_blank" rel="noopener">Falar com advogado</a>
+</div>
+
+<!-- ── HERO ────────────────────────────────────────────── -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="container">
+    <div class="hero-content">
+      <p class="hero-eyebrow fade-up">Seibert Advocacia e Consultoria</p>
+      <h1 class="hero-title fade-up delay-1">
+        Você foi demitido <em>injustamente</em> e precisa tomar uma <em>providência?</em>
+      </h1>
+      <p class="hero-sub fade-up delay-2">
+        Ajudamos pessoas como você, que estão passando por algum problema trabalhista e precisam de um advogado especialista. Conheça seus direitos.
+      </p>
+      <div class="hero-actions fade-up delay-3">
+        <a href="https://api.whatsapp.com/send/?phone=5577998678131" class="btn btn-gold" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24"><path d="M20.52 3.48A11.93 11.93 0 0 0 12 0C5.37 0 0 5.37 0 12c0 2.11.55 4.17 1.6 5.99L0 24l6.18-1.62A11.94 11.94 0 0 0 12 24c6.63 0 12-5.37 12-12 0-3.2-1.25-6.21-3.48-8.52zM12 22a9.94 9.94 0 0 1-5.07-1.39l-.36-.22-3.74.98.99-3.65-.23-.37A9.94 9.94 0 0 1 2 12C2 6.49 6.49 2 12 2s10 4.49 10 10-4.49 10-10 10zm5.47-7.41c-.3-.15-1.77-.87-2.04-.97s-.47-.15-.67.15-.77.97-.94 1.17-.35.22-.65.07a8.15 8.15 0 0 1-2.39-1.48 9.06 9.06 0 0 1-1.65-2.06c-.18-.3-.02-.47.13-.62.14-.13.3-.35.45-.52.15-.18.2-.3.3-.5s.05-.38-.02-.52-.67-1.61-.91-2.2c-.24-.58-.49-.5-.67-.51l-.57-.01c-.2 0-.52.07-.79.38s-1.04 1.01-1.04 2.47 1.06 2.86 1.21 3.06c.15.2 2.08 3.17 5.03 4.45.7.3 1.25.48 1.68.62.7.22 1.34.19 1.84.12.56-.08 1.73-.71 1.97-1.39.24-.68.24-1.27.17-1.39-.07-.12-.27-.19-.57-.34z" fill="currentColor"/></svg>
+          Consulta gratuita
+        </a>
+        <a href="#servicos" class="btn btn-outline">Ver nossos serviços</a>
+      </div>
+      <div class="hero-proof fade-up delay-4">
+        <img class="proof-google-logo" src="./images/google_logo_g_logo_icon_159348.png" alt="Google">
+        <div class="proof-divider"></div>
+        <div class="proof-info">
+          <span class="proof-stars">★★★★★</span>
+          <span class="proof-label"><strong>142 avaliações</strong> no Google</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── SERVICES ────────────────────────────────────────── -->
+<section id="servicos" class="section section--dark">
+  <div class="container">
+    <div class="services-header">
+      <span class="tag">Áreas de atuação</span>
+      <h2 class="section-title">Situações em que podemos <span>te ajudar</span></h2>
+      <div class="divider" style="margin:20px auto;"></div>
+      <p class="section-sub">Especializados em Direito Trabalhista, atuamos para garantir que seus direitos sejam respeitados em todas as etapas da relação de emprego.</p>
+    </div>
+    <div class="services-grid">
+
+      <div class="service-card">
+        <div class="service-icon">
+          <!-- handshake / contrato -->
+          <svg viewBox="0 0 24 24"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+        </div>
+        <h3>Vínculo de emprego</h3>
+        <p>Asseguramos que seu vínculo de emprego seja formalizado, com contrato e registro na carteira de trabalho.</p>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon">
+          <!-- shield / proteção -->
+          <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <h3>Acidente de trabalho</h3>
+        <p>Defendemos seus direitos nos casos de acidente de trabalho ou doenças ocupacionais, buscando a devida indenização.</p>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon">
+          <!-- clipboard / aviso -->
+          <svg viewBox="0 0 24 24"><path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="1"/><path d="M9 12h6M9 16h4"/></svg>
+        </div>
+        <h3>Aviso prévio</h3>
+        <p>Protegemos seus direitos no aviso prévio, garantindo compensação adequada em casos de demissão sem justa causa.</p>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon">
+          <!-- banknote / verbas -->
+          <svg viewBox="0 0 24 24"><rect x="2" y="6" width="20" height="12" rx="2"/><circle cx="12" cy="12" r="2"/><path d="M6 12h.01M18 12h.01"/></svg>
+        </div>
+        <h3>Verbas rescisórias</h3>
+        <p>Receba corretamente suas verbas rescisórias: férias proporcionais, 13º salário proporcional e saldo de salário.</p>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon">
+          <!-- wallet / FGTS -->
+          <svg viewBox="0 0 24 24"><path d="M20 12V8a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-4"/><path d="M20 12h-4a2 2 0 0 0 0 4h4"/></svg>
+        </div>
+        <h3>FGTS</h3>
+        <p>Asseguramos a correta realização dos depósitos do FGTS pelo empregador, protegendo seus direitos.</p>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon">
+          <!-- percent / multa -->
+          <svg viewBox="0 0 24 24"><line x1="19" y1="5" x2="5" y2="19"/><circle cx="6.5" cy="6.5" r="2.5"/><circle cx="17.5" cy="17.5" r="2.5"/></svg>
+        </div>
+        <h3>Multa de 40% do FGTS</h3>
+        <p>Garantimos seus direitos de receber a multa rescisória de 40% sobre o saldo do FGTS em rescisões sem justa causa.</p>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon">
+          <!-- clock / horas -->
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        </div>
+        <h3>Horas extras</h3>
+        <p>Asseguramos o registro e o pagamento correto das horas extras, com acréscimo mínimo de 50% sobre a hora normal.</p>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon">
+          <!-- coffee break / intervalo -->
+          <svg viewBox="0 0 24 24"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>
+        </div>
+        <h3>Intervalo intrajornada</h3>
+        <p>Orientamos sobre a importância do intervalo intrajornada mínimo para refeições e descanso e como reclamar sua compensação.</p>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon">
+          <!-- alert triangle / insalubridade -->
+          <svg viewBox="0 0 24 24"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+        </div>
+        <h3>Adicionais de insalubridade</h3>
+        <p>Protegemos seus direitos ao adicional de insalubridade ou periculosidade em atividades insalubres ou perigosas.</p>
+      </div>
+
+    </div>
+    <div class="services-cta">
+      <a href="https://api.whatsapp.com/send/?phone=5577998678131" class="btn btn-gold" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" style="width:18px;height:18px"><path d="M20.52 3.48A11.93 11.93 0 0 0 12 0C5.37 0 0 5.37 0 12c0 2.11.55 4.17 1.6 5.99L0 24l6.18-1.62A11.94 11.94 0 0 0 12 24c6.63 0 12-5.37 12-12 0-3.2-1.25-6.21-3.48-8.52zM12 22a9.94 9.94 0 0 1-5.07-1.39l-.36-.22-3.74.98.99-3.65-.23-.37A9.94 9.94 0 0 1 2 12C2 6.49 6.49 2 12 2s10 4.49 10 10-4.49 10-10 10zm5.47-7.41c-.3-.15-1.77-.87-2.04-.97s-.47-.15-.67.15-.77.97-.94 1.17-.35.22-.65.07a8.15 8.15 0 0 1-2.39-1.48 9.06 9.06 0 0 1-1.65-2.06c-.18-.3-.02-.47.13-.62.14-.13.3-.35.45-.52.15-.18.2-.3.3-.5s.05-.38-.02-.52-.67-1.61-.91-2.2c-.24-.58-.49-.5-.67-.51l-.57-.01c-.2 0-.52.07-.79.38s-1.04 1.01-1.04 2.47 1.06 2.86 1.21 3.06c.15.2 2.08 3.17 5.03 4.45.7.3 1.25.48 1.68.62.7.22 1.34.19 1.84.12.56-.08 1.73-.71 1.97-1.39.24-.68.24-1.27.17-1.39-.07-.12-.27-.19-.57-.34z" fill="currentColor"/></svg>
+        Falar com um especialista
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ── ABOUT ────────────────────────────────────────────── -->
+<section id="sobre" class="section">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-video">
+        <iframe src="https://www.instagram.com/reel/DZs_Y4pxWDZ/embed/"
+          allowfullscreen
+          allow="autoplay; clipboard-write; encrypted-media; picture-in-picture"
+          loading="lazy">
+        </iframe>
+      </div>
+      <div>
+        <span class="tag">// Sobre o escritório</span>
+        <h2 class="section-title">Experiência e dedicação <span>ao seu lado</span></h2>
+        <div class="divider"></div>
+        <p class="section-sub">
+          Escritório de Advocacia com foco no Direito Trabalhista e Acidentário. Atuante em diversas áreas do direito, especialmente nas áreas do Direito Trabalhista, Direito Previdenciário, Direito Securitário e Leilões de Imóveis.
+        </p>
+        <p class="section-sub" style="margin-top:16px;">
+          Nossa experiência profissional iniciou-se em maio de 2008, tendo atuado em centenas de processos jurídicos desde então, sempre com foco no direito do trabalhador.
+        </p>
+        <div class="about-stats">
+          <div class="stat-box">
+            <div class="stat-number">+17</div>
+            <div class="stat-label">Anos de experiência</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-number">142</div>
+            <div class="stat-label">Avaliações Google</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-number">+500</div>
+            <div class="stat-label">Casos atendidos</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-number">5★</div>
+            <div class="stat-label">Nota média no Google</div>
+          </div>
+        </div>
+        <div style="margin-top:32px;">
+          <a href="https://api.whatsapp.com/send/?phone=5577998678131" class="btn btn-gold" target="_blank" rel="noopener">Fale conosco agora</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── PROMISE ──────────────────────────────────────────── -->
+<section id="promise">
+  <div class="container">
+    <div class="promise-logo">
+      <img src="./images/vetor-logo.png" alt="Seibert Advocacia">
+    </div>
+    <h2 class="promise-title">Não é só defesa, é uma <span>solução completa.</span></h2>
+    <p class="promise-sub">
+      Ao contratar nossa equipe, você recebe muito mais do que acompanhamento jurídico. Você recebe clareza, estratégia e presença — do início ao fim.
+    </p>
+    <div class="promise-features">
+      <div class="promise-feature">
+        <div class="promise-feature-icon">
+          <!-- target / estratégia -->
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
+        </div>
+        <span>Estratégia</span>
+      </div>
+      <div class="promise-feature">
+        <div class="promise-feature-icon">
+          <!-- lightbulb / clareza -->
+          <svg viewBox="0 0 24 24"><path d="M9 21h6"/><path d="M12 3a6 6 0 0 1 6 6c0 2.22-1.21 4.16-3 5.2V17H9v-2.8A6 6 0 0 1 6 9a6 6 0 0 1 6-6z"/></svg>
+        </div>
+        <span>Clareza</span>
+      </div>
+      <div class="promise-feature">
+        <div class="promise-feature-icon">
+          <!-- users / presença -->
+          <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </div>
+        <span>Presença</span>
+      </div>
+      <div class="promise-feature">
+        <div class="promise-feature-icon">
+          <!-- award / resultado -->
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/></svg>
+        </div>
+        <span>Resultado</span>
+      </div>
+    </div>
+    <a href="https://api.whatsapp.com/send/?phone=5577998678131" class="btn btn-gold" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" style="width:18px;height:18px"><path d="M20.52 3.48A11.93 11.93 0 0 0 12 0C5.37 0 0 5.37 0 12c0 2.11.55 4.17 1.6 5.99L0 24l6.18-1.62A11.94 11.94 0 0 0 12 24c6.63 0 12-5.37 12-12 0-3.2-1.25-6.21-3.48-8.52zM12 22a9.94 9.94 0 0 1-5.07-1.39l-.36-.22-3.74.98.99-3.65-.23-.37A9.94 9.94 0 0 1 2 12C2 6.49 6.49 2 12 2s10 4.49 10 10-4.49 10-10 10zm5.47-7.41c-.3-.15-1.77-.87-2.04-.97s-.47-.15-.67.15-.77.97-.94 1.17-.35.22-.65.07a8.15 8.15 0 0 1-2.39-1.48 9.06 9.06 0 0 1-1.65-2.06c-.18-.3-.02-.47.13-.62.14-.13.3-.35.45-.52.15-.18.2-.3.3-.5s.05-.38-.02-.52-.67-1.61-.91-2.2c-.24-.58-.49-.5-.67-.51l-.57-.01c-.2 0-.52.07-.79.38s-1.04 1.01-1.04 2.47 1.06 2.86 1.21 3.06c.15.2 2.08 3.17 5.03 4.45.7.3 1.25.48 1.68.62.7.22 1.34.19 1.84.12.56-.08 1.73-.71 1.97-1.39.24-.68.24-1.27.17-1.39-.07-.12-.27-.19-.57-.34z" fill="currentColor"/></svg>
+      Quero uma consulta gratuita
+    </a>
+  </div>
+</section>
+
+<!-- ── PRINCIPLES ──────────────────────────────────────── -->
+<section id="principios" class="section section--dark">
+  <div class="container">
+    <div class="principles-header">
+      <span class="tag">Nossos valores</span>
+      <h2 class="section-title">Os princípios que <span>nos guiam</span></h2>
+      <div class="divider" style="margin:20px auto;"></div>
+    </div>
+    <div class="principles-grid">
+
+      <div class="principle-card">
+        <div class="principle-icon">
+          <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+        </div>
+        <h3>Conforto e Bem-estar</h3>
+        <p>Conte com a ética e o conforto necessários para falar abertamente sobre qualquer assunto, por mais difícil que pareça.</p>
+      </div>
+
+      <div class="principle-card">
+        <div class="principle-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <h3>Segurança</h3>
+        <p>Você está em um espaço seguro e na presença de profissionais capacitados e a cada dia mais especializados para te atender.</p>
+      </div>
+
+      <div class="principle-card">
+        <div class="principle-icon">
+          <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        </div>
+        <h3>Transparência</h3>
+        <p>Atuamos com total clareza em cada etapa do processo, mantendo você sempre informado e confiante sobre os próximos passos.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── FOOTER ──────────────────────────────────────────── -->
+<footer id="contato">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <img src="./images/vetor-logo.png" alt="Seibert Advocacia e Consultoria">
+        <p class="footer-desc">
+          Escritório de advocacia especializado em Direito Trabalhista, Previdenciário, Securitário e Leilões de Imóveis. Atuando desde 2008 na defesa dos seus direitos.
+        </p>
+        <a href="https://www.google.com/maps/search/?api=1&query=Av+Olivia+Flores+2285+sala+204+Olivia+Office+Candeias+Vitória+da+Conquista+BA+45028610" class="footer-contact-item" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;margin-top:3px;opacity:.7"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 1 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          Av Olivia Flores 2285, sala 204 — Olivia Office<br>Candeias, Vitória da Conquista – BA<br>CEP 45028-610
+        </a>
+        <a href="https://api.whatsapp.com/send/?phone=5577998678131" class="footer-contact-item" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" style="flex-shrink:0;margin-top:2px;opacity:.7"><path d="M20.52 3.48A11.93 11.93 0 0 0 12 0C5.37 0 0 5.37 0 12c0 2.11.55 4.17 1.6 5.99L0 24l6.18-1.62A11.94 11.94 0 0 0 12 24c6.63 0 12-5.37 12-12 0-3.2-1.25-6.21-3.48-8.52zM12 22a9.94 9.94 0 0 1-5.07-1.39l-.36-.22-3.74.98.99-3.65-.23-.37A9.94 9.94 0 0 1 2 12C2 6.49 6.49 2 12 2s10 4.49 10 10-4.49 10-10 10zm5.47-7.41c-.3-.15-1.77-.87-2.04-.97s-.47-.15-.67.15-.77.97-.94 1.17-.35.22-.65.07a8.15 8.15 0 0 1-2.39-1.48 9.06 9.06 0 0 1-1.65-2.06c-.18-.3-.02-.47.13-.62.14-.13.3-.35.45-.52.15-.18.2-.3.3-.5s.05-.38-.02-.52-.67-1.61-.91-2.2c-.24-.58-.49-.5-.67-.51l-.57-.01c-.2 0-.52.07-.79.38s-1.04 1.01-1.04 2.47 1.06 2.86 1.21 3.06c.15.2 2.08 3.17 5.03 4.45.7.3 1.25.48 1.68.62.7.22 1.34.19 1.84.12.56-.08 1.73-.71 1.97-1.39.24-.68.24-1.27.17-1.39-.07-.12-.27-.19-.57-.34z"/></svg>
+          (77) 99867-8131
+        </a>
+        <div class="footer-socials">
+          <a href="https://www.instagram.com/eliasseibert.adv/" class="social-btn" target="_blank" rel="noopener" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4>Serviços</h4>
+        <ul class="footer-links">
+          <li><a href="#servicos">Vínculo de emprego</a></li>
+          <li><a href="#servicos">Acidente de trabalho</a></li>
+          <li><a href="#servicos">Aviso prévio</a></li>
+          <li><a href="#servicos">Verbas rescisórias</a></li>
+          <li><a href="#servicos">FGTS</a></li>
+          <li><a href="#servicos">Horas extras</a></li>
+          <li><a href="#servicos">Adicional de insalubridade</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Áreas de atuação</h4>
+        <ul class="footer-links">
+          <li><a href="#">Direito Trabalhista</a></li>
+          <li><a href="#">Direito Previdenciário</a></li>
+          <li><a href="#">Direito Securitário</a></li>
+          <li><a href="#">Leilões de Imóveis</a></li>
+          <li><a href="#">Direito do Consumidor</a></li>
+          <li><a href="#">Direito Civil</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bar">
+      <p>© 2026 Seibert Advocacia e Consultoria. Todos os direitos reservados.</p>
+      <p>OAB/BA — Vitória da Conquista – BA</p>
+    </div>
+  </div>
+</footer>
+
+<!-- ── WHATSAPP FLOAT ──────────────────────────────────── -->
+<a href="https://api.whatsapp.com/send/?phone=5577998678131" class="wa-float" target="_blank" rel="noopener" aria-label="Falar no WhatsApp">
+  <svg viewBox="0 0 24 24"><path d="M20.52 3.48A11.93 11.93 0 0 0 12 0C5.37 0 0 5.37 0 12c0 2.11.55 4.17 1.6 5.99L0 24l6.18-1.62A11.94 11.94 0 0 0 12 24c6.63 0 12-5.37 12-12 0-3.2-1.25-6.21-3.48-8.52zM12 22a9.94 9.94 0 0 1-5.07-1.39l-.36-.22-3.74.98.99-3.65-.23-.37A9.94 9.94 0 0 1 2 12C2 6.49 6.49 2 12 2s10 4.49 10 10-4.49 10-10 10zm5.47-7.41c-.3-.15-1.77-.87-2.04-.97s-.47-.15-.67.15-.77.97-.94 1.17-.35.22-.65.07a8.15 8.15 0 0 1-2.39-1.48 9.06 9.06 0 0 1-1.65-2.06c-.18-.3-.02-.47.13-.62.14-.13.3-.35.45-.52.15-.18.2-.3.3-.5s.05-.38-.02-.52-.67-1.61-.91-2.2c-.24-.58-.49-.5-.67-.51l-.57-.01c-.2 0-.52.07-.79.38s-1.04 1.01-1.04 2.47 1.06 2.86 1.21 3.06c.15.2 2.08 3.17 5.03 4.45.7.3 1.25.48 1.68.62.7.22 1.34.19 1.84.12.56-.08 1.73-.71 1.97-1.39.24-.68.24-1.27.17-1.39-.07-.12-.27-.19-.57-.34z"/></svg>
+</a>
+
+</body>
+</html>
